@@ -5,6 +5,17 @@ resource "aws_security_group" "eks_cluster_controlplane" {
 
   ingress = [
     {
+      description      = "TLS from Infra VPC"
+      from_port        = 443
+      to_port          = 443
+      protocol         = "tcp"
+      cidr_blocks      = ["10.x.x.0/24", "10.x.x.0/24"]
+      ipv6_cidr_blocks = null
+      prefix_list_ids  = null
+      security_groups  = null
+      self             = null
+    },
+    {
       description      = "Allow VPC access cluster"
       from_port        = 443
       to_port          = 443
@@ -35,7 +46,7 @@ resource "aws_security_group" "eks_cluster_controlplane" {
       cidr_blocks      = null
       ipv6_cidr_blocks = null
       prefix_list_ids  = null
-      security_groups  = ["sg-xxxx"]
+      security_groups  = ["sg-xxxxx"]
     }
   ]
 
@@ -85,10 +96,43 @@ resource "aws_security_group" "eks_cluster_shred_nodegroup" {
       from_port        = 22
       to_port          = 22
       protocol         = "tcp"
-      cidr_blocks      = ["x.x.x.x/32"]
+      cidr_blocks      = ["10.x.0.103/32"]
       ipv6_cidr_blocks = null
       prefix_list_ids  = null
       security_groups  = null
+      self             = null
+    },
+    {
+      description      = "Allow ALB to access DevOps Traefik NodePort"
+      from_port        = 30800
+      to_port          = 30800
+      protocol         = "tcp"
+      cidr_blocks      = ["10.x.0.0/23"]
+      ipv6_cidr_blocks = null
+      prefix_list_ids  = null
+      security_groups  = ["sg-xxxxx"]
+      self             = null
+    },
+    {
+      description      = "Allow ALB to access Internal Traefik NodePort"
+      from_port        = 30700
+      to_port          = 30700
+      protocol         = "tcp"
+      cidr_blocks      = ["10.x.0.0/23"]
+      ipv6_cidr_blocks = null
+      prefix_list_ids  = null
+      security_groups  = ["sg-xxxxxx"]
+      self             = null
+    },
+    {
+      description      = "Allow ALB to access Private Traefik NodePort"
+      from_port        = 30900
+      to_port          = 30900
+      protocol         = "tcp"
+      cidr_blocks      = ["10.x.0.0/23"]
+      ipv6_cidr_blocks = null
+      prefix_list_ids  = null
+      security_groups  = ["sg-xxxxxx"]
       self             = null
     }
   ]
