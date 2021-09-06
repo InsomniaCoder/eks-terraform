@@ -18,3 +18,9 @@ resource "aws_eks_addon" "kube_proxy" {
   addon_name        = "kube-proxy"
   addon_version     = "v1.21.2-eksbuild.2"
 }
+
+module "operators" {
+  source = "./operators"
+
+  cluster_name = local.cluster_name
+}

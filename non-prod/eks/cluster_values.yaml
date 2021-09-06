@@ -1,22 +1,22 @@
 region : ap-southeast-1
-eks-name: eks-nonprod
+eks-name: nonprod
 
 kubernetes_version: 1.21
-vpc_id: vpc-xxx
+vpc_id: vpc-xxxx
 private_subnets : [
-      "subnet-xxx",
-      "subnet-xxx",
-      "subnet-xxx",
+      "subnet-xxxx",
+      "subnet-xxxx",
+      "subnet-xxxx",
 ]
 
 pod_subnets : [
-      "subnet-xxx",
-      "subnet-xxx",
-      "subnet-xxx",
+      "subnet-xxxx",
+      "subnet-xxxx",
+      "subnet-xxxx",
 ]
 
-eks_master_sg: "sg-xxx"
-eks_node_sg: "sg-xxx"
+eks_master_sg: "sg-xxxx"
+eks_node_sg: "sg-xxxx"
 
 worker_node_type : r5.2xlarge
 worker_node_max : 1

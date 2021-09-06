@@ -1,0 +1,3 @@
+module "infra" {
+  source = "./devops"
+}
