@@ -1,0 +1,16 @@
+region: ap-southeast-1
+vpc_id: vpc-xxxxx
+
+alb-log-bucket: "elb-log"
+certificate-arn: "arn:aws:acm:ap-southeast-1:xxxxxx:certificate/xxxxxxx"
+k8s-edge-node-instances: ["i-xxxxxx"]
+
+private_subnets: ["subnet-xxxx",
+ "subnet-xxxx", "subnet-xxxx"]
+
+traefik-sg-devops: ["sg-xxxx"]
+traefik-devops-nodeport: 30800
+traefik-sg-internal: ["sg-xxxx"]
+traefik-internal-nodeport: 30700
+traefik-sg-private: ["sg-xxxxx"]
+traefik-private-nodeport: 30900
